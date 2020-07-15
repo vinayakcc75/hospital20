@@ -18,8 +18,7 @@ function get_data(user_id,callback){
 module.exports.profile=  function(req,res){
 	if(req.session.user_id){
 	//var user_id=req.session.user_id;
-	console.log('Profile',req.session.user_id_ref);
-	console.log('Type',req.session.user_type);
+	
 	var here=(req.session.user_type===1)?req.session.user_id_ref:req.session.user_id;
 	connection.query("select user_type,email,phone,age,gender,address,firstname,lastname from login where user_id=?",[here],function(errormain,resultmain,fieldmain){
 			if(errormain){res.json({message:"Something went wrong!!"})}

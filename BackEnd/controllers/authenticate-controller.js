@@ -60,7 +60,6 @@ module.exports.authenticate=function(req,res){
 
         });
 			}
-			console.log('session',req.session);
 			
                 
             /*}else{

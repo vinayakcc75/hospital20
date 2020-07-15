@@ -1,0 +1,39 @@
+version: '3'
+services:
+
+        
+        ############################
+        #front end
+        ############################
+        front:
+            build: ./FrontEnd
+            stdin_open: true
+            environment:
+                PORT: ${REACT_APP_PORT}
+                CHOKIDAR_USEPOLLING: ${CHOKIDAR_USEPOLLING}
+            expose:
+                - ${REACT_APP_PORT}
+            ports:
+                - ${REACT_APP_PORT}:${REACT_APP_PORT}
+            volumes:
+                - ./Users/vinayak/Desktop/hospital20-master/FrontEnd/src
+                - ./Users/vinayak/Desktop/hospital20-master/FrontEnd/public
+            links: 
+                - back
+            command: npm run start
+
+            ############################
+            #back end
+            ############################
+        back:
+                build: ./BackEnd
+                expose:
+                    - ${APP_SERVER_PORT}
+                environment:
+                    API_HOST: ${API_HOST}
+                    PORT: ${APP_SERVER_PORT}
+                ports:
+                    - ${APP_SERVER_PORT}:${APP_SERVER_PORT}
+                volumes:
+                    - ./Users/vinayak/Desktop/hospital20-master/BackEnd/controllers
+                command: npm run start

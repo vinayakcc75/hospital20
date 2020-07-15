@@ -9,7 +9,6 @@ import BookSlot from './BookSlot';
 import PatientView from '../Patient View/PatientView';
 import DoctorView from '../Doctor View/DoctorView';
 import NavBar from './Navbar/Navbar';
-import './LandingPage.css';
 import Footer from './Footer';
 import Forgot from './Forgot'
 class LandingPage extends Component{
