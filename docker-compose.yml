@@ -16,8 +16,8 @@ services:
             ports:
                 - ${REACT_APP_PORT}:${REACT_APP_PORT}
             volumes:
-                - ./Users/vinayak/Desktop/hospital20-master/FrontEnd/src
-                - ./Users/vinayak/Desktop/hospital20-master/FrontEnd/public
+                - ./FrontEnd/src
+                - ./FrontEnd/public
             links: 
                 - back
             command: npm run start
@@ -35,5 +35,5 @@ services:
                 ports:
                     - ${APP_SERVER_PORT}:${APP_SERVER_PORT}
                 volumes:
-                    - ./Users/vinayak/Desktop/hospital20-master/BackEnd/controllers
+                    - ./BackEnd/controllers
                 command: npm run start
