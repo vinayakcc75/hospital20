@@ -1,6 +1,5 @@
 import React from 'react';
 import './AboutUs.css';
-import DatePicker from 'react-date-picker';
 import TimeSlotsCalender from './TimeSlotsCalender'
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
@@ -30,7 +29,6 @@ class BookSlot extends React.Component{
             patientName:'',
             patientPhone:'',
             date:new Date(),
-            now:false,
             selectedSlot:'',
             slotsOpen:false,
             patientID:"",

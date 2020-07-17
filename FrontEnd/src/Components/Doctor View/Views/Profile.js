@@ -32,7 +32,7 @@ class Profile extends React.Component{
     .then(response=>response.json())
     .then(ret=>{
       console.log(ret)
-      if(ret.status==true){
+      if(ret.status===true){
         this.setState({patId:this.props.user.user_id});
         this.setState({fname:ret.message[0].firstname});
         this.setState({lname:ret.message[0].lastname});
@@ -41,7 +41,6 @@ class Profile extends React.Component{
         this.setState({phone:ret.message[0].phone});
         this.setState({email:ret.message[0].email});
         this.setState({address:ret.message[0].address});
-
         this.setState({department:ret.message2.department_name});
         this.setState({experience:ret.message2.experience});
         this.setState({qualification:ret.message2.qualification});
@@ -61,7 +60,6 @@ class Profile extends React.Component{
   };
 
 render(){
-    const {user} =this.props;
     return(
 <div>
             {this.state.open === true && (

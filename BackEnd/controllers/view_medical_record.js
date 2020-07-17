@@ -17,7 +17,7 @@ module.exports.records=function(req,res){
 			message: resultmain});
 		}else{
 			res.json({
-			status:true,
+			status:false,
 			message: 'No records available.'});}
 		}
 	});

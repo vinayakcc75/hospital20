@@ -3,13 +3,12 @@ var express=require('express');
 var router=express.Router();
 
 function update_doctor(user_id,specialization,experience,qualification,department_id,callback){
-				connection.query("update doctor set experience=?,qualification=?,specialization=? where user_id_ref=?",[experience,qualification,specialization,user_id],function(errord,resultd,fieldd){
+				connection.query("update doctor set experience=?,qualification=?,specialization=? where doctor_id=?",[experience,qualification,specialization,user_id],function(errord,resultd,fieldd){
 					if(errord){
 						console.log(errord);
 						return callback(false);
 					}
 					else{
-					//	console.log(resultd);
 						return callback(true);
 					}
 				})
@@ -31,22 +30,17 @@ function get_user_type(email,phone,callback){
 
 //user_id will come from session value
 module.exports.save_editprofile=function(req,res){
+	if(req.session.user_id){
 	var email=req.body.email;
 	var phone=req.body.phone;
 	var type;
+	var user_id=req.session.user_id;
 	var specialization=req.body.specialization;
 	var qualification=req.body.qualification;
 	var experience=req.body.experience;
 	var department_id=req.body.department_id;
-	connection.query("select user_id from login where email=? or phone=?",[email,phone],function(error,result,field){
-		if(error){
-			re.json({message:error});
-		}
-		if (result.length<=1){
-	//var user_id=3;
-	var user_id=result[0].user_id;
-	//console.log(user_id);
-	connection.query("update login set email=? ,phone=? , age=? ,gender=? ,lastname=?,firstname=?,address=? where user_id=?",[email,phone,req.body.age,req.body.gender,req.body.lastname,req.body.firstname,req.body.address,user_id],function(errormain,resultmain,fieldmain){
+	
+	connection.query("update login set email=? ,phone=? , age=? ,gender=? ,lastname=?,firstname=?,address=? where user_id=?",[email,phone,req.body.age,req.body.gender,req.body.lastname,req.body.firstname,req.body.address,req.session.user_id_ref],function(errormain,resultmain,fieldmain){
 		if(errormain){res.json({message:errormain});}
 		else{
 			//console.log(resultmain);
@@ -61,9 +55,8 @@ module.exports.save_editprofile=function(req,res){
 			message:"Profile Editied"});
 		}
 		});
-		}
-		else{
-			res.json({message: "There aldready exists some other account with this email or phone number." });
-		}
-	});
+	}
+	else{
+		res.json({message: "Please login."});
+	}
 }

@@ -34,7 +34,7 @@ class NewEntry extends React.Component{
        .then(response=>response.json())
        .then(ret=>{
          console.log(ret)
-         if(ret.status==true){
+         if(ret.status===true){
            this.setState({fname:ret.message[0].firstname});
            this.setState({lname:ret.message[0].lastname});
            this.setState({department:ret.message2.department_name});

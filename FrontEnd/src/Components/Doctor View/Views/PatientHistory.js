@@ -1,6 +1,5 @@
 import React from "react";
 import "./PatientHistory.css";
-import RecordsList from "./RecordsList";
 
 class PatientHistory extends React.Component {
   constructor(props) {

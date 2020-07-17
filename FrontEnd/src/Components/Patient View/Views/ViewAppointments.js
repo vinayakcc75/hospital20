@@ -24,7 +24,8 @@ class ViewAppointments extends React.Component{
         })
         .then(response=>response.json())
         .then(ret=>{
-            console.log(ret,k,l);
+            if(ret.status===true)
+            alert('Cancelled Appointment')
         })
     }
     appointments=(a)=>{

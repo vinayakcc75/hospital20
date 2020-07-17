@@ -117,7 +117,7 @@ showForgot=()=>{
               onChange={this.passChange}
             ></input>
             <Link to='/forgot'>
-              <a href="#" onClick={this.showForgot}>
+              <a href="/forgot" onClick={this.showForgot}>
                 <p>Forgot password?</p>
               </a>
               </Link>

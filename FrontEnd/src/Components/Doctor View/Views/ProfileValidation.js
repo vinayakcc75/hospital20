@@ -37,7 +37,7 @@ class ProfileValidation extends React.Component {
                 }),
               })
                 .then((response) => response.json())
-                .then(async (ret) => {
+                .then( (ret) => {
                   if(ret.status===true){
                     alert('success');
                   }

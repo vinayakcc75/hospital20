@@ -4,7 +4,7 @@ class Records extends React.Component{
    constructor(props){
        super(props);
        this.state={
-           a:[]
+           a:""
        }
    }
    componentDidMount(){
@@ -17,8 +17,7 @@ class Records extends React.Component{
         })
         .then(response => response.json())
         .then(async ret => {
-            console.log(ret)
-            if(ret.status===true){
+            if(ret.status===true&&ret.message.length>0){
             this.setState({a:ret.message})}
         console.log(ret,this.props.user.user_id)        
     })
